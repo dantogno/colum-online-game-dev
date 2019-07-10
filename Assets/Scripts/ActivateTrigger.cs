@@ -4,17 +4,35 @@ using UnityEngine;
 
 public class ActivateTrigger : MonoBehaviour
 {
-    public GameObject objectToActivate;
+    [SerializeField]
+    private GameObject objectToActivate;
+
+    [SerializeField]
+    private bool shouldDeactivateObjectOnStart = true;
+
+    [SerializeField]
+    private bool isReusable = false;
+
+    private bool hasBeenUsed = false;
 
     private void Start()
     {
         // Initially turn the object off so that we can leave it on in the editor view.
-        objectToActivate.SetActive(false);
+        if (objectToActivate != null)
+        {
+            objectToActivate.SetActive(false);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
-            objectToActivate.SetActive(true); 
+        if (other.tag == "Player" && objectToActivate != null)
+        {          
+            if (isReusable || !hasBeenUsed)
+            {
+                objectToActivate.SetActive(true);
+                hasBeenUsed = true;
+            }
+        }
     }
 }
