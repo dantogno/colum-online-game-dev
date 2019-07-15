@@ -9,7 +9,7 @@ public class InteractiveObject : MonoBehaviour
 
     public string DisplayText => displayText;
 
-    public void InteractWith()
+    public virtual void InteractWith()
     {
         Debug.Log($"The player interacted with {name}");
     }
