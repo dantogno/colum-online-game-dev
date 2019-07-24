@@ -2,30 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class InteractiveObject : MonoBehaviour
 {
     [SerializeField]
     protected string displayText = "Interactive Object";
 
-    // public int AutoProperty { get; set; } = 5;
-
-    //public string LonghandProperty
-    //{
-    //    get { return longhandPropertyBackingVariable; }
-    //    set { longhandPropertyBackingVariable = value; }
-    //}
-
-    //private string longhandPropertyBackingVariable;
+    protected AudioSource audioSource;
 
     public virtual string DisplayText => displayText;
-    //{
-    //    get { return displayText; }
-    //}
-
+    protected virtual void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     public virtual void InteractWith()
     {
         // Debug.Log("The player interacted with " + name + ".");
         // Example of string interpolation.
         Debug.Log($"The player interacted with {name}.");
+        if (audioSource != null)
+            audioSource.Play();
     }
 }
