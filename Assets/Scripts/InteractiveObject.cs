@@ -5,7 +5,7 @@ using UnityEngine;
 public class InteractiveObject : MonoBehaviour
 {
     [SerializeField]
-    private string displayText = "Interactive Object";
+    protected string displayText = "Interactive Object";
 
     // public int AutoProperty { get; set; } = 5;
 
@@ -17,7 +17,7 @@ public class InteractiveObject : MonoBehaviour
 
     //private string longhandPropertyBackingVariable;
 
-    public string DisplayText => displayText;
+    public virtual string DisplayText => displayText;
     //{
     //    get { return displayText; }
     //}
