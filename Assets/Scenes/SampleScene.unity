@@ -399,7 +399,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh26312
+  m_Name: pb_Mesh14762
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -638,7 +638,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1906584257}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.14222
+  m_Size: 0.14222002
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -11479,7 +11479,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1612356102}
   m_HandleRect: {fileID: 1612356101}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -13624,7 +13624,7 @@ PrefabInstance:
     - target: {fileID: 5856931575641553542, guid: ce114b32f8a06fd45afe4dffc8ddd994,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6467933609120012870, guid: ce114b32f8a06fd45afe4dffc8ddd994,
         type: 3}
@@ -19110,7 +19110,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1956400684}
   m_Direction: 2
   m_Value: 1.0000004
-  m_Size: 0.8270562
+  m_Size: 0.8270563
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -26281,6 +26281,7 @@ GameObject:
   - component: {fileID: 1931011283}
   - component: {fileID: 1931011282}
   - component: {fileID: 1931011284}
+  - component: {fileID: 1931011285}
   m_Layer: 5
   m_Name: Inventory Menu
   m_TagString: Untagged
@@ -26358,6 +26359,18 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1931011285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1931011280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8766da5c9af3e3242bc5cb7b5e5e5031, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &1955214793
 Mesh:
   m_ObjectHideFlags: 0
@@ -26868,7 +26881,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 11.999987, y: 0}
+  m_AnchoredPosition: {x: 12.000074, y: 0}
   m_SizeDelta: {x: -12, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2065735166
