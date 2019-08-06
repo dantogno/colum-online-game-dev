@@ -7,8 +7,16 @@ public class InventoryObject : InteractiveObject
     [SerializeField]
     private string objectName = "Inventory Object";
 
-    public string ObjectName => objectName;
+    [SerializeField]
+    private Sprite icon;
 
+    [TextArea(3, 8)]
+    [SerializeField]
+    private string descriptionText = "Inventory Object description text goes here.";
+
+    public string ObjectName => objectName;
+    public Sprite Icon => icon;
+    public string DescriptionText => descriptionText;
     private new Collider collider;
     private MeshRenderer meshRenderer;
 
@@ -19,8 +27,7 @@ public class InventoryObject : InteractiveObject
         meshRenderer = GetComponent<MeshRenderer>();
     }
 
-    // TODO: create description text
-    // TODO: create icon
+    
 
     public override void InteractWith()
     {

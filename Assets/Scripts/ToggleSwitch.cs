@@ -7,9 +7,9 @@ public class ToggleSwitch : InteractiveObject
     [SerializeField]
     private GameObject objectToToggle;
 
-    private AudioSource audioSource;
+    private new AudioSource audioSource;
 
-    private void Start()
+    protected override void Start()
     {
         audioSource = GetComponent<AudioSource>();
     }
