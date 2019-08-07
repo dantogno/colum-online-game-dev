@@ -5,9 +5,17 @@ using Gameplay;
 
 public class InventoryMenu : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject inventoryMenuItemTogglePrefab;
+
+    [SerializeField]
+    private Transform inventoryListScrollViewContent;
+
     private CanvasGroup canvasGroup;
     private DetectInteractiveObjects detectInteractiveObjects;
     private PlayerController playerController;
+    private List<GameObject> menuItemToggles = new List<GameObject>();
+
     private void Start()
     {
         detectInteractiveObjects = FindObjectOfType<DetectInteractiveObjects>();
@@ -38,6 +46,8 @@ public class InventoryMenu : MonoBehaviour
 
         playerController.enabled = false;
         detectInteractiveObjects.enabled = false;
+
+        GenerateMenuItemToggles();
     }
     private void HideMenu()
     {
@@ -50,5 +60,27 @@ public class InventoryMenu : MonoBehaviour
 
         playerController.enabled = true;
         detectInteractiveObjects.enabled = true;
+
+        ClearMenuItemToggles();
+    }
+
+    private void GenerateMenuItemToggles()
+    {
+        foreach (InventoryObject item in PlayerInventory.InventoryObjects)
+        {
+            GameObject clone = 
+                Instantiate(inventoryMenuItemTogglePrefab, inventoryListScrollViewContent);
+
+            menuItemToggles.Add(clone);
+        }
+    }
+
+    private void ClearMenuItemToggles()
+    {
+        foreach (GameObject toggle in menuItemToggles)
+        {
+            Destroy(toggle);
+        }
+        menuItemToggles.Clear();
     }
 }
