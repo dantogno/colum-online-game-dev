@@ -7,13 +7,19 @@ public class InventoryObject : InteractiveObject
     [SerializeField]
     private string objectName = "Interactive Object";
 
-    public string ObjectName => objectName;
+    [SerializeField]
+    private Sprite icon;
 
-    // TODO: Create inventory object icons
-    // TODO: Create inventory object description text
+    [SerializeField]
+    [TextArea(3,8)]
+    private string descriptionText;
 
     private new Collider collider;
     private MeshRenderer meshRenderer;
+
+    public string ObjectName => objectName;
+    public Sprite Icon => icon;
+    public string DescriptionText => descriptionText;
 
     protected override void Start()
     {

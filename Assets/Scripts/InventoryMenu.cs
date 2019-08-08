@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Gameplay;
+using TMPro;
 
 public class InventoryMenu : MonoBehaviour
 {
@@ -11,10 +12,32 @@ public class InventoryMenu : MonoBehaviour
     [SerializeField]
     private Transform inventoryListScrollViewContent;
 
+    [SerializeField]
+    private TextMeshProUGUI descriptionArea, heading;
+
+    [SerializeField]
+    private string defaultDescriptionText = "Select an object you have " +
+        "collected to view more information about it.";
+
+    [SerializeField]
+    private string defaultHeadingText = "Inventory Menu";
+
     private CanvasGroup canvasGroup;
     private DetectInteractiveObjects detectInteractiveObjects;
     private PlayerController playerController;
     private List<GameObject> menuItemToggles = new List<GameObject>();
+    private InventoryMenuItemToggle selectedToggleUseProperty;
+
+    public InventoryMenuItemToggle SelectedToggle
+    {
+        get { return selectedToggleUseProperty; }
+        set
+        {
+            selectedToggleUseProperty = value;
+            UpdateDescriptionText();
+            UpdateHeadingText();
+        }
+    }
 
     private void Start()
     {
@@ -22,6 +45,7 @@ public class InventoryMenu : MonoBehaviour
         playerController = FindObjectOfType<PlayerController>();
         canvasGroup = GetComponent<CanvasGroup>();
         HideMenu();
+        SelectedToggle = null;
     }
     private void Update()
     {
@@ -66,10 +90,13 @@ public class InventoryMenu : MonoBehaviour
 
     private void GenerateMenuItemToggles()
     {
-        foreach (InventoryObject item in PlayerInventory.InventoryObjects)
+        foreach (InventoryObject inventoryObject in PlayerInventory.InventoryObjects)
         {
             GameObject clone = 
                 Instantiate(inventoryMenuItemTogglePrefab, inventoryListScrollViewContent);
+
+            InventoryMenuItemToggle toggle = clone.GetComponent<InventoryMenuItemToggle>();
+            toggle.AssociatedInventoryObject = inventoryObject;
 
             menuItemToggles.Add(clone);
         }
@@ -82,5 +109,22 @@ public class InventoryMenu : MonoBehaviour
             Destroy(toggle);
         }
         menuItemToggles.Clear();
+        SelectedToggle = null;
+    }
+
+    private void UpdateDescriptionText()
+    {
+        if (SelectedToggle != null)
+            descriptionArea.text = SelectedToggle.AssociatedInventoryObject.DescriptionText;
+        else
+            descriptionArea.text = defaultDescriptionText;
+    }
+
+    private void UpdateHeadingText()
+    {
+        if (SelectedToggle != null)
+            heading.text = SelectedToggle.AssociatedInventoryObject.ObjectName.ToUpper();
+        else
+            heading.text = defaultHeadingText.ToUpper();
     }
 }
