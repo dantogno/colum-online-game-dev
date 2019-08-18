@@ -27,6 +27,7 @@ public class InventoryMenu : MonoBehaviour
     private PlayerController playerController;
     private List<GameObject> menuItemToggles = new List<GameObject>();
     private InventoryMenuItemToggle selectedToggleUseProperty;
+    private AudioSource audioSource;
 
     public InventoryMenuItemToggle SelectedToggle
     {
@@ -41,6 +42,7 @@ public class InventoryMenu : MonoBehaviour
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         detectInteractiveObjects = FindObjectOfType<DetectInteractiveObjects>();
         playerController = FindObjectOfType<PlayerController>();
         canvasGroup = GetComponent<CanvasGroup>();
@@ -57,6 +59,8 @@ public class InventoryMenu : MonoBehaviour
                 HideMenu();
             else
                 ShowMenu();
+
+            audioSource.Play();
         }
     }
     private void ShowMenu()

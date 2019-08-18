@@ -12,9 +12,11 @@ public class InventoryMenuItemToggle : MonoBehaviour
     private ToggleGroup toggleGroup;
     private Toggle toggle;
     private InventoryMenu inventoryMenu;
+    private AudioSource audioSource;
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         inventoryMenu = FindObjectOfType<InventoryMenu>();
         toggle = GetComponent<Toggle>();
         toggleGroup = GetComponentInParent<ToggleGroup>();
@@ -36,6 +38,7 @@ public class InventoryMenuItemToggle : MonoBehaviour
         if (isOn)
         {
             inventoryMenu.SelectedToggle = this;
+            audioSource.Play();
         }
     }
 }
