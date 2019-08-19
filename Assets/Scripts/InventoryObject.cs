@@ -18,13 +18,13 @@ public class InventoryObject : InteractiveObject
     public Sprite Icon => icon;
     public string DescriptionText => descriptionText;
     private new Collider collider;
-    private MeshRenderer meshRenderer;
+    private MeshRenderer[] meshRenderer;
 
     protected override void Start()
     {
         base.Start();
         collider = GetComponent<Collider>();
-        meshRenderer = GetComponent<MeshRenderer>();
+        meshRenderer = GetComponentsInChildren<MeshRenderer>();
     }
 
     
@@ -37,6 +37,11 @@ public class InventoryObject : InteractiveObject
         if (collider != null)
             collider.enabled = false;
         if (meshRenderer != null)
-            meshRenderer.enabled = false;
+        {
+            foreach (var renderer in meshRenderer)
+            {
+                renderer.enabled = false;
+            }
+        }
     }
 }
